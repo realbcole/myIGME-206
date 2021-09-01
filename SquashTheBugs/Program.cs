@@ -23,6 +23,7 @@ namespace SquashTheBugs
             float i = 0;
 
             // declare string to hold all numbers
+            // had to move outside the for loop so it could be referenced outside
             string allNumbers = null;
 
             // loop through the numbers 1 through 10
