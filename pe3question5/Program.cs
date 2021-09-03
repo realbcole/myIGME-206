@@ -25,7 +25,7 @@ namespace pe3question5
             while (i < 5)
             {
                 // iAns = user's answer converted to an integer
-                int iAns = 0;
+                //int iAns = 0;
                 // ans = user's answer
                 string ans = null;
                 // ask for an integer
@@ -33,15 +33,23 @@ namespace pe3question5
                 // store answer
                 ans = Console.ReadLine();
                 // convert answer to int
-                iAns = Convert.ToInt32(ans);
-                // multiply it to the other integers
-                product *= iAns;
-                // counter + 1
-                i += 1;
+                if (Int32.TryParse(ans, out int iAns))
+                {
+                    // multiply it to the other integers
+                    product *= iAns;
+
+                    // counter + 1
+                    i += 1;
+                }
+
+                else //if input is invalid 
+                {
+                    Console.WriteLine("Error: Please enter an integer");
+                }
+                
             }
             // return product of integers
             Console.WriteLine("The product of your integers is: " + product);
-
         }
     }
 }
