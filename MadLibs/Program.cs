@@ -23,6 +23,7 @@ namespace MadLibs
             Console.WriteLine("Please enter your name: "); 
             string name = Console.ReadLine();
             Console.WriteLine("Hello, " + name + "!");
+            int tries = 0;
             Play:
             Console.WriteLine("Do you want to play Mad Libs? (yes/no): ");
             string answer = Console.ReadLine();
@@ -35,7 +36,15 @@ namespace MadLibs
             }
             else // if input is invalid
             {
-                Console.WriteLine("Please try again");
+                tries += 1;
+                if (tries >= 3)
+                {
+                    Console.WriteLine("Just type yes or no...");
+                }
+                else
+                {
+                    Console.WriteLine("Please try again");
+                }
                 goto Play; // go back to ask again
             }
             Start:
@@ -78,10 +87,10 @@ namespace MadLibs
 
             }
             resultString = resultString.Replace(" . ", ". "); // fix the spacing
-            Console.Write(resultString); // print final string
-
+            Console.WriteLine(resultString); // print final string
+            tries = 0;
             Restart: 
-            Console.WriteLine("\nWould you like to play again? (yes/no): "); 
+            Console.Write("Would you like to play again? (yes/no): "); 
             string playagain = Console.ReadLine();
             if (playagain.ToLower() == "yes" || playagain.ToLower() == "no")
             {
@@ -96,7 +105,15 @@ namespace MadLibs
             }
             else
             {
-                Console.WriteLine("Please try again");
+                tries += 1;
+                if (tries >= 3)
+                {
+                    Console.WriteLine("Just type yes or no...");
+                }
+                else
+                {
+                    Console.WriteLine("Please try again");
+                }
                 goto Restart;
             }
             End:
