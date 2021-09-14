@@ -194,7 +194,7 @@ class Program
 
             void TimesUp(Object source, System.Timers.ElapsedEventArgs e)
             {
-                Console.WriteLine("You ran out of time!");
+                Console.WriteLine("\nYou ran out of time! Press enter to continue");
                 timersUp = true;
 
             }
@@ -211,7 +211,6 @@ class Program
             }
             else
             {
-                incorrect:
                 Console.BackgroundColor = ConsoleColor.Black;
                 Console.ForegroundColor = ConsoleColor.Red;
                 Console.WriteLine("I'm sorry {0}. The answer is {1}", myName, nAnswer);
