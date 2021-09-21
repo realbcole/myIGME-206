@@ -19,7 +19,6 @@ namespace T1Q12
         {
             string sName;
             double dSalary = 30000;
-            bool bValid = true;
             Console.WriteLine("Please enter your name: ");
             sName = Console.ReadLine();
             if (GiveRaise(sName, ref dSalary))
