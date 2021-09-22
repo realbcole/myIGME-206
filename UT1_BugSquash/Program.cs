@@ -24,7 +24,7 @@ namespace UT1_BugSquash
                 // Logic error: didnt store answer in a variable
                 sNumber = Console.ReadLine();
             } while (!int.TryParse(sNumber, out nX));
-
+            y:
             do
             {
                 Console.Write("Enter a positive whole number for y: ");
@@ -32,7 +32,12 @@ namespace UT1_BugSquash
             } //while (int.TryParse(sNumber, out nX));
               // logic error - output should be nY, and should have ! in front
             while (!int.TryParse(sNumber, out nY));
-
+            //need to check if y is positive
+            if(nY < 0)
+            {
+                Console.WriteLine("Number must be positive");
+                goto y;
+            }
 
             // compute the factorial of the number using a recursive function
             nAnswer = Power(nX, nY);
