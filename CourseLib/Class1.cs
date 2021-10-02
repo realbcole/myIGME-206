@@ -60,7 +60,7 @@ namespace CourseLib
                 }
                 catch
                 {
-
+                    sortedList[courseCode] = null;
                 }
             }
         }
