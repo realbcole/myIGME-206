@@ -13,7 +13,7 @@ namespace PetApp
     class Program
     {
         // Method: Main
-        // Purpose: instantiate objects and loop 50 times to either buy a new pet or have one do an action
+        // Purpose: instantiate objects and loop 50 times to either buy a new pet or have one do a random action
         // Restrictions: None
         static void Main(string[] args)
         {
