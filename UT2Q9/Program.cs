@@ -42,7 +42,10 @@ namespace UT2Q9
     {
         void RaiseSail();
     }
-
+    //Class: Boat
+    //Author: Brandon Cole
+    //Purpose: boat class
+    //Restrictions: None
     public abstract class Boat
     {
         public string brand;
@@ -56,7 +59,10 @@ namespace UT2Q9
         public abstract void TakeOutOfWater();
 
     }
-
+    //Class: Speedboat
+    //Author: Brandon Cole
+    //Purpose: speedboat class, which is a child class of boat
+    //Restrictions: None
     public class Speedboat : Boat, Drive
     {
         public int fuel;
@@ -82,7 +88,10 @@ namespace UT2Q9
         }
 
     }
-
+    //Class: Sailboat
+    //Author: Brandon Cole
+    //Purpose: sailboat class, which is a child class of boat
+    //Restrictions: None
     public class Sailboat : Boat, Sail
     {
         public bool sailsRaised;
