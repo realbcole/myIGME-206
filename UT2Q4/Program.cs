@@ -6,8 +6,15 @@ using System.Threading.Tasks;
 
 namespace UT2Q4
 {
+    //Class: Program
+    //Author: Brandon Cole
+    //Purpose: Question 4, 5, 6, 7
+    //Restrictions: None
     class Program
     {
+        //Method: Main
+        //Purpose: create tardis and phonebooth objects and call UsePhone with both
+        //Restrictions: None
         static void Main(string[] args)
         {
             Tardis tardis = new Tardis();
@@ -16,7 +23,9 @@ namespace UT2Q4
             UsePhone(tardis);
             UsePhone(phoneBooth);
         }
-
+        //Method: UsePhone
+        //Purpose: if object is tardis, time travel, if object is phonebooth, open door
+        //Restrictions: None
         static void UsePhone(object obj)
         {
             if (obj.GetType() is Tardis)
@@ -33,7 +42,10 @@ namespace UT2Q4
             }
         }
     }
-
+    //Class: Phone
+    //Author: Brandon Cole
+    //Purpose: phone class
+    //Restrictions: None
     public abstract class Phone
     {
         private string phoneNumber;
@@ -42,7 +54,10 @@ namespace UT2Q4
         public abstract void Connect();
         public abstract void Disconnect();
     }
-
+    //Class: RotaryPhone
+    //Author: Brandon Cole
+    //Purpose: rotary phone class
+    //Restrictions: None
     public class RotaryPhone : Phone, PhoneInterface
     {
         public void Answer()
@@ -70,7 +85,10 @@ namespace UT2Q4
             Console.WriteLine("Disconnected");
         }
     }
-
+    //Class: Tardis
+    //Author: Brandon Cole
+    //Purpose: tardis class
+    //Restrictions: None
     public class Tardis : RotaryPhone
     {
         private bool sonicScrewdriver;
@@ -87,7 +105,7 @@ namespace UT2Q4
         {
             Console.WriteLine("Traveling through time...");
         }
-
+        //OPERATORS
         public static bool operator ==(Tardis A, Tardis B)
         {
             if (A.whichDrWho == B.whichDrWho)
@@ -192,7 +210,10 @@ namespace UT2Q4
             }
         }
     }
-
+    //Class: PhoneBooth
+    //Author: Brandon Cole
+    //Purpose: phone booth class
+    //Restrictions: None
     public class PhoneBooth : PushButtonPhone
     {
         private bool superMan;
@@ -209,7 +230,10 @@ namespace UT2Q4
             Console.WriteLine("Closing door...");
         }
     }
-
+    //Class: PushButtonPhone
+    //Author: Brandon Cole
+    //Purpose: push button phone
+    //Restrictions: None
     public class PushButtonPhone : Phone, PhoneInterface
     {
         public void Answer()
