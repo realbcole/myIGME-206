@@ -10,7 +10,27 @@ namespace UT2Q4
     {
         static void Main(string[] args)
         {
+            Tardis tardis = new Tardis();
+            PhoneBooth phoneBooth = new PhoneBooth();
 
+            UsePhone(tardis);
+            UsePhone(phoneBooth);
+        }
+
+        static void UsePhone(object obj)
+        {
+            if (obj.GetType() is Tardis)
+            {
+                Tardis tardis = new Tardis();
+                tardis = (Tardis)obj;
+                tardis.TimeTravel();
+            }
+            else if (obj.GetType() is PhoneBooth)
+            {
+                PhoneBooth phoneBooth = new PhoneBooth();
+                phoneBooth = (PhoneBooth)obj;
+                phoneBooth.OpenDoor();
+            }
         }
     }
 
@@ -27,27 +47,27 @@ namespace UT2Q4
     {
         public void Answer()
         {
-
+            Console.WriteLine("Answering Phone...");
         }
 
         public void MakeCall()
         {
-
+            Console.WriteLine("Making Call...");
         }
 
         public void HangUp()
         {
-
+            Console.WriteLine("Hung up");
         }
 
         public override void Connect()
         {
-
+            Console.WriteLine("Connecting...");
         }
 
         public override void Disconnect()
         {
-
+            Console.WriteLine("Disconnected");
         }
     }
 
@@ -65,7 +85,111 @@ namespace UT2Q4
 
         public void TimeTravel()
         {
+            Console.WriteLine("Traveling through time...");
+        }
 
+        public static bool operator ==(Tardis A, Tardis B)
+        {
+            if (A.whichDrWho == B.whichDrWho)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        public static bool operator !=(Tardis A, Tardis B)
+        {
+            if (A.whichDrWho == B.whichDrWho)
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+        }
+
+        public static bool operator <(Tardis A, Tardis B)
+        {
+            if (B.whichDrWho == 10)
+            {
+                return true;
+            }
+            else if ( A.whichDrWho == 10)
+            {
+                return false;
+            }
+            else if (A.whichDrWho < B.whichDrWho)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        public static bool operator >(Tardis A, Tardis B)
+        {
+            if (A.whichDrWho == 10)
+            {
+                return true;
+            }
+            else if (B.whichDrWho == 10)
+            {
+                return false;
+            }
+            else if (A.whichDrWho > B.whichDrWho)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        public static bool operator <=(Tardis A, Tardis B)
+        {
+            if (B.whichDrWho == 10)
+            {
+                return true;
+            }
+            else if (A.whichDrWho == 10)
+            {
+                return false;
+            }
+            else if (A.whichDrWho <= B.whichDrWho)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+
+        public static bool operator >=(Tardis A, Tardis B)
+        {
+            if (A.whichDrWho == 10)
+            {
+                return true;
+            }
+            else if (B.whichDrWho == 10)
+            {
+                return false;
+            }
+            else if (A.whichDrWho >= B.whichDrWho)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
     }
 
@@ -77,12 +201,12 @@ namespace UT2Q4
 
         public void OpenDoor()
         {
-
+            Console.WriteLine("Opening door...");
         }
 
         public void CloseDoor()
         {
-
+            Console.WriteLine("Closing door...");
         }
     }
 
@@ -90,27 +214,27 @@ namespace UT2Q4
     {
         public void Answer()
         {
-
+            Console.WriteLine("Answering Phone...");
         }
 
         public void MakeCall()
         {
-
+            Console.WriteLine("Making Call...");
         }
 
         public void HangUp()
         {
-
+            Console.WriteLine("Hung up");
         }
 
         public override void Connect()
         {
-
+            Console.WriteLine("Connecting...");
         }
 
         public override void Disconnect()
         {
-
+            Console.WriteLine("Disconnected");
         }
     }
 
