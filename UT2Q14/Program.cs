@@ -12,6 +12,11 @@ namespace StructToClass
         public string address;
     }
     */
+
+    //Class: Friend
+    //Author: Brandon Cole
+    //Purpose: Implement the friend struct as a class
+    //Restrictions: None
     public class Friend
     {
         public string name;
@@ -24,10 +29,15 @@ namespace StructToClass
             return (Friend)this.MemberwiseClone();
         }
     }
-
+    //Class: Program
+    //Author: Brandon Cole
+    //Purpose: Change friend struct to class and still have the same output
+    //Restrictions: None
     class Program
     {
-
+        //Method: Main
+        //Purpose: create friend and enemy, set values, clone friend into enemy, change some values, then print
+        //Restrictions: None
         static void Main(string[] args)
         {
             Friend friend = new Friend();
