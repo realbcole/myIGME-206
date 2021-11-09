@@ -109,13 +109,17 @@ namespace DontDie
                 }
             }
             question1:
-            Console.WriteLine("Would you like to wager your health against a trivia question? (Y/N) ");
+            Console.Write("Would you like to wager your health against a trivia question? (Y/N) ");
             string sTriv = Console.ReadLine();
             if (sTriv.ToLower() == "y")
             {
-                Console.Write("How much of your health would you like to wager? (You have " + hp + " health) ");
+                Console.Write("How much of your health would you like to wager? (You have " + hp + " health) (b to go back) ");
                 string sWager = Console.ReadLine();
                 int nWager;
+                if (sWager.ToLower() == "b")
+                {
+                    goto question1;
+                }
                 try
                 {
                     nWager = Int32.Parse(sWager);
@@ -150,6 +154,7 @@ namespace DontDie
                 {
                     trivia.results[0].incorrect_answers[i] = HttpUtility.HtmlDecode(trivia.results[0].incorrect_answers[i]);
                 }
+                Console.WriteLine();
                 Console.WriteLine(trivia.results[0].question);
                 List<string> answers = new List<string>();
                 answers.Add(trivia.results[0].correct_answer);
@@ -192,13 +197,15 @@ namespace DontDie
                 {
                     if (options[0] == trivia.results[0].correct_answer && !bTimeOut)
                     {
+                        Console.WriteLine();
                         Console.WriteLine("Correct! Your health has been increased by your wager");
                         hp += nWager;
                         Console.WriteLine("Your health is now " + hp);
                     }
                     else
                     {
-                        Console.WriteLine("Wrong! Your health has been decreased by your wager");
+                        Console.WriteLine();
+                        Console.WriteLine("Wrong! The correct answer was " + trivia.results[0].correct_answer + "\nYour health has been decreased by your wager");
                         hp -= nWager;
                         if (hp <= 0)
                         {
@@ -215,13 +222,15 @@ namespace DontDie
                 {
                     if (options[1] == trivia.results[0].correct_answer && !bTimeOut)
                     {
+                        Console.WriteLine();
                         Console.WriteLine("Correct! Your health has been increased by your wager");
                         hp += nWager;
                         Console.WriteLine("Your health is now " + hp);
                     }
                     else
                     {
-                        Console.WriteLine("Wrong! Your health has been decreased by your wager");
+                        Console.WriteLine();
+                        Console.WriteLine("Wrong! The correct answer was " + trivia.results[0].correct_answer + "\nYour health has been decreased by your wager");
                         hp -= nWager;
                         if (hp <= 0)
                         {
@@ -238,13 +247,15 @@ namespace DontDie
                 {
                     if (options[2] == trivia.results[0].correct_answer && !bTimeOut)
                     {
+                        Console.WriteLine();
                         Console.WriteLine("Correct! Your health has been increased by your wager");
                         hp += nWager;
                         Console.WriteLine("Your health is now " + hp);
                     }
                     else
                     {
-                        Console.WriteLine("Wrong! Your health has been decreased by your wager");
+                        Console.WriteLine();
+                        Console.WriteLine("Wrong! The correct answer was " + trivia.results[0].correct_answer + "\nYour health has been decreased by your wager");
                         hp -= nWager;
                         if (hp <= 0)
                         {
@@ -261,13 +272,15 @@ namespace DontDie
                 {
                     if (options[3] == trivia.results[0].correct_answer && !bTimeOut)
                     {
+                        Console.WriteLine();
                         Console.WriteLine("Correct! Your health has been increased by your wager");
                         hp += nWager;
                         Console.WriteLine("Your health is now " + hp);
                     }
                     else
                     {
-                        Console.WriteLine("Wrong! Your health has been decreased by your wager");
+                        Console.WriteLine();
+                        Console.WriteLine("Wrong! The correct answer was " + trivia.results[0].correct_answer + "\nYour health has been decreased by your wager");
                         hp -= nWager;
                         if (hp <= 0)
                         {
@@ -282,7 +295,8 @@ namespace DontDie
                 }
                 else if (bTimeOut)
                 {
-                    Console.WriteLine("You ran out of time! Your health has been decreased by your wager");
+                    Console.WriteLine();
+                    Console.WriteLine("You ran out of time! The correct answer was " + trivia.results[0].correct_answer + "\nYour health has been decreased by your wager");
                     hp -= nWager;
                     if (hp <= 0)
                     {
@@ -328,9 +342,13 @@ namespace DontDie
                     }
                 }
             }
-            Console.Write("Which way would you like to go (N/S/E/W)? ");
+            Console.Write("Which way would you like to go (N/S/E/W)?  (b to go back) ");
             string sAnswer = Console.ReadLine();
-            if (sAnswer.ToLower() != "n" && sAnswer.ToLower() != "e" && sAnswer.ToLower() != "s" && sAnswer.ToLower() != "w")
+            if (sAnswer.ToLower() == "b")
+            {
+                goto question1;
+            }
+            else if (sAnswer.ToLower() != "n" && sAnswer.ToLower() != "e" && sAnswer.ToLower() != "s" && sAnswer.ToLower() != "w")
             {
                 Console.WriteLine("Please enter a valid response");
                 goto question2;
@@ -383,7 +401,7 @@ namespace DontDie
 
                 }
                 Console.WriteLine("You cannot go that way!");
-                goto question2;
+                goto question1;
             }
                
         }
@@ -425,6 +443,7 @@ namespace DontDie
             string sQuit = Console.ReadLine();
             if (sQuit.ToLower() == "y")
             {
+                Console.WriteLine();
                 StartGame();
             }
             else if (sQuit.ToLower() == "n")
