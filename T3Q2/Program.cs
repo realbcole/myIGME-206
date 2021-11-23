@@ -258,9 +258,9 @@ namespace T3Q2
                     }
 
                     if( childNode.minCostToStart == int.MaxValue || 
-                        node.minCostToStart /*+ neighbor.cost */< childNode.minCostToStart)
+                        node.minCostToStart + neighbor.cost < childNode.minCostToStart)
                     {
-                        childNode.minCostToStart = node.minCostToStart; //+ neighbor.cost;
+                        childNode.minCostToStart = node.minCostToStart + neighbor.cost;
                         childNode.nearestToStart = node;
                         if(!queue.Contains(childNode))
                         {
