@@ -6,11 +6,19 @@ using System.Threading.Tasks;
 
 namespace T3Q6
 {
+    //Class: Program
+    //Author: Brandon Cole
+    //Purpose: Make btree with provided numbers, read them into list, make balanced btree with list
+    //Restrictions: None
     class Program
     {
 
+
         public static List<int> nodeList = new List<int>();
 
+        //Method: Main
+        //Purpose: Make btree with provided numbers, read them into list, make balanced btree with list
+        //Restrictions: None
         static void Main(string[] args)
         {
             BTree node = null;
@@ -31,60 +39,35 @@ namespace T3Q6
             node = new BTree(40, root);
             node = new BTree(55, root);
             node = new BTree(60, root);
-
+            
             BTree.TraverseAscending(root);
-            foreach(int n in nodeList)
-            {
-                Console.Write(n + " ");
-            }
-            Console.WriteLine();
-            
-            
-            int min = nodeList[0];
-            int max = nodeList[nodeList.Count - 1];
-            ConstructBalancedTree(min, max);
-            nodeList = null;
-            //BTree.TraverseAscending(root);
-            foreach (int n in nodeList)
-            {
-                Console.Write(n + " ");
-            }
-            Console.WriteLine();
+
+            BTree root2 = null;
+            int min = 0;
+            int max = nodeList.Count - 1;
+
+            int mid = (min + max) / 2;
+            root2 = new BTree(nodeList[mid], null); // root of balanced tree
+            root2.ltChild = ListToTree(min, mid - 1, root2);
+            root2.gteChild = ListToTree(mid + 1, max, root2);
+
         }
 
-
-        static BTree ConstructBalancedTree(int min, int max)
+        static BTree ListToTree(int min, int max, BTree root)
         {
-            BTree root = null;
-            int i = 0;
-            if (min == max)
+            if (min > max)
             {
                 return null;
             }
-            int median = min + (max - min) / 2;
-            if (i == 0)
-            {
-                BTree temp =  new BTree(nodeList[median], null)
-                {
-                    data = nodeList[median],
-                    ltChild = ConstructBalancedTree(min, median),
-                    gteChild = ConstructBalancedTree(median + 1, max)
-                };
 
-                root = temp;
-                i++;
-                return root;
-            }
-            else
-            {
-                return new BTree(nodeList[median], root)
-                {
-                    data = nodeList[median],
-                    ltChild = ConstructBalancedTree(min, median),
-                    gteChild = ConstructBalancedTree(median + 1, max)
-                };
-            }
+            int mid = (min + max) / 2;
+            int i = 0;
+            BTree node = new BTree(nodeList[mid], root);
+            
+            node.ltChild = ListToTree(min, mid - 1, root);
+            node.gteChild = ListToTree(mid + 1, max, root);
 
+            return node;
         }
     }
 
@@ -383,7 +366,7 @@ namespace T3Q6
 
                 //handle current node
                 Program.nodeList.Add((int)node.data);
-
+                
                 // handle "greater than or equal to children"
                 TraverseAscending(node.gteChild);
             }
