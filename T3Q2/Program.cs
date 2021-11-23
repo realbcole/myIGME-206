@@ -173,14 +173,40 @@ namespace T3Q2
 
             Console.WriteLine("\nLinked List:\n");
 
-            for (int l = 0; l < 8; l++)
-            {
-                Node nodee = new Node(l);
-                linkedGame.AddLast(nodee);
-                Console.WriteLine(NState2SState(nodee.curState));
-            }
+            Node redNode = new Node(0);
+            Node darkBlueNode = new Node(1);
+            Node greyNode = new Node(2);
+            Node lightBlueNode = new Node(3);
+            Node yellowNode = new Node(4);
+            Node orangeNode = new Node(5);
+            Node pinkNode = new Node(6);
+            Node greenNode = new Node(7);
+            redNode.AddEdge(5, greyNode);
+            redNode.AddEdge(1, darkBlueNode);
+            darkBlueNode.AddEdge(8, yellowNode);
+            darkBlueNode.AddEdge(1, lightBlueNode);
+            greyNode.AddEdge(0, lightBlueNode);
+            greyNode.AddEdge(1, orangeNode);
+            lightBlueNode.AddEdge(1, darkBlueNode);
+            lightBlueNode.AddEdge(0, greyNode);
+            yellowNode.AddEdge(6, greenNode);
+            orangeNode.AddEdge(1, pinkNode);
+            pinkNode.AddEdge(1, yellowNode);
 
-            
+            linkedGame.AddLast(redNode);
+            linkedGame.AddLast(darkBlueNode);
+            linkedGame.AddLast(greyNode);
+            linkedGame.AddLast(lightBlueNode);
+            linkedGame.AddLast(yellowNode);
+            linkedGame.AddLast(orangeNode);
+            linkedGame.AddLast(pinkNode);
+            linkedGame.AddLast(greenNode);
+
+
+            foreach (Node n in linkedGame)
+            {
+                Console.WriteLine(NState2SState(n.curState));
+            }
            
         }
         
@@ -232,9 +258,9 @@ namespace T3Q2
                     }
 
                     if( childNode.minCostToStart == int.MaxValue || 
-                        node.minCostToStart + neighbor.cost < childNode.minCostToStart)
+                        node.minCostToStart /*+ neighbor.cost */< childNode.minCostToStart)
                     {
-                        childNode.minCostToStart = node.minCostToStart + neighbor.cost;
+                        childNode.minCostToStart = node.minCostToStart; //+ neighbor.cost;
                         childNode.nearestToStart = node;
                         if(!queue.Contains(childNode))
                         {
