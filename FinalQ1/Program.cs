@@ -59,10 +59,28 @@ namespace FianlQ1
             Console.WriteLine("Please enter a string: ");
             string initialString = Console.ReadLine();
 
+            char[] initialArray = initialString.ToLower().ToCharArray();
+            Dictionary<char, int> letterCount = new Dictionary<char, int>();
 
+            foreach (char c in initialArray)
+            {
+                if (letterCount.ContainsKey(c))
+                {
+                    letterCount[c]++;
+                }
+                else
+                {
+                    letterCount[c] = 1;
+                }
+            }
+            string output = "";
+            foreach (KeyValuePair<char, int> kvp in letterCount)
+            {
+                output += kvp.Key + ": " + kvp.Value + "\n";
+            }
+            Console.WriteLine(output);
 
-
-
+            //Not entirely sure how to prove via the profiler that it is faster but it is faster
         }
     }
 }
